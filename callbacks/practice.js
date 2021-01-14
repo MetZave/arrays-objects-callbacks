@@ -28,6 +28,7 @@
 */
 
 // Code Here 
+const first = (arr, callback) => callback(arr[0])
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -48,7 +49,7 @@ first(names, function(firstName){
 */
 
 //Code Here
-
+const last = (arr, callback) => callback(arr[arr.length - 1])
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -66,7 +67,7 @@ last(names, function(lastName){
 */
 
 //Code Here
-
+const multiply = (num1, num2, callback) => callback((num1 * num2))
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -85,14 +86,15 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+const contains = (arr, name, callback) => arr.indexOf(name) != -1 ? callback(true) : callback(false)
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
-  if(result === true){
-    console.log('Colt is in the array');
-  } else {
-    console.log('Colt is not in the array');
-  }
+if(result === true){
+console.log('Colt is in the array');
+} else {
+console.log('Colt is not in the array');
+}
 });
 // Do not edit the code above.
 
@@ -106,7 +108,19 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
+const uniq = (arr, callback) => {
+  let modArr = []
+  let count
 
+  for(i = 0; i < arr.length; i++) {
+    count = i + 1
+    
+    if(arr.indexOf(arr[i], count) === -1) {
+      modArr.push(arr[i])
+    }
+  }
+  callback(modArr)
+}
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -123,7 +137,11 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
-
+const each = (names, callback) => {
+  names.forEach(element => {
+    callback(element, names.indexOf(element))
+  });
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -140,7 +158,15 @@ each(names, function(item, indice){
 */
 
 // Code here
-
+const getUserById = (users, id, callback) => {
+  let match
+  users.forEach(element => {
+    if(element.id === id) {
+      match = element
+    }
+  })
+  callback(match)
+}
 // Do not edit the code below.
 var users = [
   {
